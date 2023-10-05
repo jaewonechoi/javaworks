@@ -1,5 +1,7 @@
 package lotto;
 
+import java.util.Arrays;
+
 public class LottoTest {
 
 	public static void main(String[] args) {
@@ -19,14 +21,14 @@ public class LottoTest {
 			}
 			/*
 			 * 7 9 3 9 20 16
-			 * i=0      7
+			 * i=0     7
 			 * i=1 j=0 9
 			 * i=2 j=1 3
 			 * i=3 j=2 9 - 중복(재 추첨)
 			 * i=4 j=3
 			 */
 		}
-		
+		System.out.println(Arrays.toString(lotto));
 		//6개 출럭
 		for(int i=0; i < lotto.length; i++ ) {
 			lotto[i] = (int)(Math.random()*45 + 1);
@@ -43,7 +45,7 @@ public class LottoTest {
 		LottoTest lottoTest = new LottoTest();
 		System.out.println(lottoTest);
 		
-		
+		System.out.println(Arrays.toString(lotto));
 		
 		
 		

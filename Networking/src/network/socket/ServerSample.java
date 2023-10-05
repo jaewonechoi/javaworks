@@ -6,6 +6,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Scanner;
 
+//TCP(Transmission Control Protocol) 네트워킹
 public class ServerSample {
 
 	//서버 소켓 객체 선언

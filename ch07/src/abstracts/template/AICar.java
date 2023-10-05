@@ -1,6 +1,6 @@
 package abstracts.template;
 
-public class AiCar extends Car {
+public class AICar extends Car {
 	//AICar 클래스의 drive() 메서드 구현부 추가
 	@Override
 	public void drive() {

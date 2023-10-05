@@ -1,5 +1,8 @@
 package practice;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 public class LottoPt1 {
 
 	public static void main(String[] args) {
@@ -19,13 +22,14 @@ public class LottoPt1 {
 						i--;                   // 다시뽑은 번호를 -1  이전 인덱스로 이동
 					}
 				}
-				
 		}
+		System.out.println(Arrays.toString(lotto));
+		
 		//6개 출력
-		for(int i = 0; i < lotto.length; i++) {
+		/*for(int i = 0; i < lotto.length; i++) {
 			lotto[i] = (int)(Math.random()*45 + 1);
 			System.out.print(lotto[i] + " ");
-		}
+		}*/
 	}
 
 }

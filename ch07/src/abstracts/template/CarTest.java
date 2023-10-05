@@ -12,7 +12,7 @@ public class CarTest {
 		
 		System.out.println("=========================");
 		
-		Car myCar = new AiCar();
+		Car myCar = new AICar();
 		myCar.run();
 		
 		/*//final 클래스 체킹
