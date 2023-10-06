@@ -18,10 +18,10 @@ public class BankArrayList {
 		
 		while(sw) {
 			try {
-				System.out.println("============================================================================");
-				System.out.println("1.계좌 생성 | 2.계좌 목록 | 3.예금 | 4.출금 | 5.계좌 삭제 | 6.종료");
-				System.out.println("============================================================================");
-				System.out.print("선택>");
+				System.out.println("===============================================================================");
+				System.out.println("1.계좌 생성 | 2.계좌 목록 | 3.예금 | 4.출금 | 5.계좌 삭제 | 6. 계좌 검색 | 7.종료");
+				System.out.println("===============================================================================");
+				System.out.print("메뉴를 선택해주세요.>");
 				
 				//메뉴 선택
 				int selectNo = Integer.parseInt(scanner.nextLine());
@@ -39,6 +39,8 @@ public class BankArrayList {
 				}else if(selectNo == 5) {
 					removeAccount();			//계좌 삭제	
 				}else if(selectNo == 6) {
+					selectAccount();			//특정 계좌 검색
+				}else if(selectNo == 7) {
 					sw = false;					//종료
 				}else {
 					System.out.println("지원되지 않는 기능입니다. 다시 입력해 주세요.");
@@ -174,13 +176,38 @@ public class BankArrayList {
 				if(accountList.contains(account)) {
 					accountList.remove(account);
 				}
-				System.out.println("결과: 정상 처리되었습니다.");
+				System.out.println("결과: 계좌가 삭제 처리되었습니다.");
 				break;
 			}else{
-				System.out.println("결과: 계좌가 없습니다.");
+				System.out.println("결과: 계좌가 없습니다. 다시 입력해 주세요.");
 			}
 		}
 	}
+	
+	//특정 계좌 검색
+	private static void selectAccount() {
+		//계좌 번호와 일치하는 계좌 검색
+		System.out.println("----------------------------------------");
+		System.out.println("특정 계좌 검색");
+		System.out.println("----------------------------------------");
+		
+		while(true) {
+			System.out.print("검색할 계좌 번호: ");
+			String ano = scanner.nextLine();
+			
+			if(findAccount(ano) != null) {
+				Account account = findAccount(ano);
+				System.out.print("계좌번호: " + account.getAno() + "\t");
+				System.out.print("계좌주: " + account.getOwner() + "\t");
+				System.out.print("잔고: " + account.getBalance() + "\n");
+				System.out.println("검색하신 계좌를 찾았습니다.");
+				break;
+			}else {
+				System.out.println("검색한 계좌가 존재하지 않습니다. 다시입력해주세요");
+			}
+		}
+	}
+	
 	
 	//계좌 검색
 	private static Account findAccount(String ano) {
