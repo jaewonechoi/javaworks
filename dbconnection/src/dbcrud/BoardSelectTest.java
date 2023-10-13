@@ -36,7 +36,7 @@ public class BoardSelectTest {
 					+ "ORDER BY bno DESC";
 			pstmt = conn.prepareStatement(sql);
 			//? 값 지정
-			pstmt.setString(1, "sky123");
+			pstmt.setString(1, "cloud");
 			
 			//sql 실행
 			ResultSet rs = pstmt.executeQuery();	//데이터를 보낼때
@@ -59,12 +59,14 @@ public class BoardSelectTest {
 					OutputStream os = new FileOutputStream("C:/File/" + board.getBfileName());
 					
 					//바이너리 파일 읽고 쓰기
-					byte[] data = new byte[1024];
+					/*byte[] data = new byte[1024];
 					while(true) {
 						int num = is.read(data);
 						if(num == -1) break;
 						os.write(data, 0, num);
-					}
+					}*/
+					is.transferTo(os);	//바이너리 파일 쓰기(저장) 메서드
+					
 					os.flush();
 					os.close();
 					is.close();
