@@ -217,11 +217,25 @@ public class AccountDAO {
 					String sql = "DELETE FROM account WHERE ano = ?";
 					pstmt = conn.prepareStatement(sql);
 					pstmt.setString(1, ano);
-					//sql 실행
-					pstmt.executeUpdate();
-					System.out.println("입력하신 계좌가 정상 삭제되었습니다.");
+					while(true) {
+						System.out.println("계좌 삭제를 원하시면 Y | 취소를 원하시면 N 을 입력해주세요");
+						String str = scanner.nextLine();
+						if(str.toLowerCase().equals("y")) {
+							//sql 실행
+							pstmt.executeUpdate();
+							System.out.println("입력하신 계좌가 정상 삭제되었습니다.");
+							break;
+						}else if(str.toLowerCase().equals("n")) {
+							System.out.println("삭제를 취소합니다");
+							break;
+						}else {
+							System.out.println("잘못 입력하셨습니다. 다시 입력해주세요");
+						}
+					}
 				} catch (SQLException e) {
 					e.printStackTrace();
+				} finally {
+					JDBCUtil.close(conn, pstmt);
 				}
 				break;
 			}else{
@@ -243,6 +257,29 @@ public class AccountDAO {
 			
 			if(findAccount(ano) != null) {
 				//db 처리
+				try {
+					conn = JDBCUtil.getConnection();
+					String sql = "SELECT * FROM account "
+							+ "WHERE ano = ?";
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setString(1, ano);
+					
+					rs = pstmt.executeQuery();
+					if(rs.next()) {
+						ano = rs.getString("ano");
+						String owner = rs.getString("owner");
+						int balance = rs.getInt("balance");
+						
+						System.out.print("계좌번호: " + ano + "\t");
+						System.out.print("계좌주: " + owner + "\t");
+						System.out.print("잔고: " + balance + "\n");
+					}
+				} catch (SQLException e) {
+					e.printStackTrace();
+				} finally {
+					JDBCUtil.close(conn, pstmt, rs);
+				}
+				
 				break;
 			}else {
 				System.out.println("검색한 계좌가 존재하지 않습니다. 다시입력해주세요");
