@@ -3,21 +3,18 @@ package board;
 import java.io.Serializable;
 import java.util.Date;
 
-//DTO(VO) - 자료 전달 객체
-public class Board implements Serializable{
+public class Board implements Serializable{	//직렬화 시킴
 
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1001L;
 	
 	//필드
 	private int bno;
 	private String btitle;
 	private String bcontent;
 	private String bwriter;
-	private Date bdate;		//java.util
+	private Date bdate;
 	
-	public Board() {}
-	
-	public int getBno() {
+	public long getBno() {
 		return bno;
 	}
 	public void setBno(int bno) {
@@ -50,7 +47,6 @@ public class Board implements Serializable{
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
 	
 	
 }
