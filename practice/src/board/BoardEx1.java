@@ -14,7 +14,7 @@ public class BoardEx1 {
 	private PreparedStatement pstmt;
 	
 	private String driverClass = "oracle.jdbc.OracleDriver";
-	private String url = "jdbc:oracle:thin@localhost:1521/xe";
+	private String url = "jdbc:oracle:thin:@localhost:1521/xe";
 	private String user = "c##mydb";
 	private String password = "pwmydb";
 	
@@ -35,7 +35,7 @@ public class BoardEx1 {
 		System.out.println();
 		System.out.println("[게시물 목록]");
 		System.out.println("--------------------------------------------------------------");
-		System.out.printf("%-4s%-12s%-12s%-40s\n", "no", "writer", "date", "title");
+		System.out.printf("%-4s%-12s%-20s%-20s\n", "no", "writer", "date", "title");
 		System.out.println("--------------------------------------------------------------");
 		
 		try {
@@ -87,7 +87,37 @@ public class BoardEx1 {
 	}
 	
 	public void create() {
-		System.out.println("create() 메서드 실행됨");
+		//System.out.println("create() 메서드 실행됨");
+		Board board = new Board();
+		System.out.println("[새 게시물 입력]");
+		
+		System.out.println("제목: ");
+		String title = scanner.nextLine();
+		board.setBtitle(title);
+		
+		System.out.println("내용: ");
+		String content = scanner.nextLine();
+		board.setBtitle(content);
+		
+		System.out.println("작성자: ");
+		String writer = scanner.nextLine();
+		board.setBtitle(writer);
+		
+		//db 처리
+		try {
+			String sql = "INSERT INTO board(bno, btitle, bcontent, bwriter) "
+					+ "VALUES (seq.NEXTVAL, ?, ?, ?)";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, board.getBtitle());
+			pstmt.setString(2, board.getBcontent());
+			pstmt.setString(3, board.getBwriter());
+			
+			pstmt.executeUpdate();	//sql 실행문
+			pstmt.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			exit();
+		}	
 		list();
 	}
 	
