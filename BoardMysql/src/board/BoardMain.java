@@ -231,7 +231,7 @@ public class BoardMain {
 				pstmt.setInt(1, board.getBno());
 				
 				pstmt.executeUpdate();
-				System.out.println("모든 게시물을 삭제하였습니다.");
+				System.out.println("해당 게시물을 삭제하였습니다.");
 				
 				pstmt.close();
 			} catch (SQLException e) {

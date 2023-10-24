@@ -29,20 +29,8 @@ public class ChessPiece {
 			}else if(key > 1 || key <= 2) {
 				key--;
 			}
-			
-			System.out.print("찾은 queen의 개수: ");
-			int key2 = scanner.nextInt();
-			
-			chess.add(key);
-			if(key2 == chess.get(1)) {
-				key2++;
-			}else if(key2 > 1 || key2 <= 2) {
-				key2--;
-			}
-			
-			
+				
 		}
-		System.out.println(chess);
 
 	}
 
