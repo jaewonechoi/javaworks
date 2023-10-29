@@ -1,4 +1,4 @@
-package calculator2;
+package calculatorImplementsActionListener;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -82,7 +82,7 @@ public class Calculator extends JFrame implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource() == calcBtn) {
+		if(e.getSource() == calcBtn) {	//객체가 calcBtn일 경우
 			int num1 = Integer.parseInt(text1.getText());
 			String operator = (String)comboBox.getSelectedItem();
 			int num2 = Integer.parseInt(text2.getText());
@@ -105,6 +105,12 @@ public class Calculator extends JFrame implements ActionListener{
 				text3.setText(String.valueOf(result2));
 				break;
 			}
-		}
+		}//calcBtn 끝
+		
+		if(e.getSource() == resetBtn) {	//객체가 resetBtn인 경우
+			text1.setText(null);
+			text2.setText(null);
+			text3.setText(null);
+		}//resetBtn 끝
 	}
 }
