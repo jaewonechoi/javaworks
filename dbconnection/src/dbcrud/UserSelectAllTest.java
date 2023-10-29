@@ -33,7 +33,7 @@ public class UserSelectAllTest {
 			
 			//sql 실행 - 검색
 			ResultSet rs = pstmt.executeQuery();	//데이터를 가져올때 쓰임
-			List<User> userList = new ArrayList<>();
+			List<User> userList = new ArrayList<>();	//저장할 배열 선언
 			while(rs.next()) {		//검색한 데이터가 있으면(찾았으면)
 				//db에서 userid(칼럼은 소문자)를 꺼내옴
 				User user = new User();
